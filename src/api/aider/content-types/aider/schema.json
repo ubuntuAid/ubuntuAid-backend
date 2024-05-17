@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "aiders",
+  "info": {
+    "singularName": "aider",
+    "pluralName": "aiders",
+    "displayName": "Aider",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "AiderImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "reviewCount": {
+      "type": "integer"
+    },
+    "rating": {
+      "type": "integer"
+    },
+    "location": {
+      "type": "string"
+    },
+    "aiderCaption": {
+      "type": "text"
+    },
+    "practiceArea": {
+      "type": "string"
+    },
+    "license": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "tel": {
+      "type": "biginteger"
+    },
+    "message": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "star": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

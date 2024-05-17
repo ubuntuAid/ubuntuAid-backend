@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ubuntu_aidercarouselcards",
+  "info": {
+    "singularName": "ubuntu-aidercarouselcard",
+    "pluralName": "ubuntu-aidercarouselcards",
+    "displayName": "ubuntuAidercarouselcard",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "AiderName": {
+      "type": "string"
+    },
+    "reviewStars": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "reviewsCount": {
+      "type": "string"
+    },
+    "ubuntuRating": {
+      "type": "string"
+    },
+    "aiderLocation": {
+      "type": "string"
+    },
+    "practiceArea": {
+      "type": "string"
+    },
+    "profileImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "reviewTitle": {
+      "type": "text"
+    },
+    "reviewerStars": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "reviewerName": {
+      "type": "string"
+    },
+    "reviewDate": {
+      "type": "date"
+    },
+    "review": {
+      "type": "text"
+    }
+  }
+}
