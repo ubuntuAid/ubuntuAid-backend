@@ -27,7 +27,7 @@
       "type": "integer"
     },
     "rating": {
-      "type": "integer"
+      "type": "decimal"
     },
     "location": {
       "type": "string"
@@ -54,11 +54,12 @@
       "type": "string"
     },
     "star": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }
