@@ -362,6 +362,91 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiAiderAider extends Schema.CollectionType {
+  collectionName: 'aiders';
+  info: {
+    singularName: 'aider';
+    pluralName: 'aiders';
+    displayName: 'Aider';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    AiderImage: Attribute.Media;
+    name: Attribute.String;
+    reviewCount: Attribute.Integer;
+    rating: Attribute.Decimal;
+    location: Attribute.String;
+    aiderCaption: Attribute.Text;
+    practiceArea: Attribute.String;
+    license: Attribute.String;
+    link: Attribute.String;
+    tel: Attribute.BigInteger;
+    message: Attribute.String;
+    website: Attribute.String;
+    star: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::aider.aider',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::aider.aider',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUbuntuAidercarouselcardUbuntuAidercarouselcard
+  extends Schema.CollectionType {
+  collectionName: 'ubuntu_aidercarouselcards';
+  info: {
+    singularName: 'ubuntu-aidercarouselcard';
+    pluralName: 'ubuntu-aidercarouselcards';
+    displayName: 'ubuntuAidercarouselcard';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    AiderName: Attribute.String;
+    reviewStars: Attribute.Media & Attribute.Required;
+    reviewsCount: Attribute.String;
+    ubuntuRating: Attribute.String;
+    aiderLocation: Attribute.String;
+    practiceArea: Attribute.String;
+    profileImage: Attribute.Media & Attribute.Required;
+    reviewTitle: Attribute.Text;
+    reviewerStars: Attribute.Media;
+    reviewerName: Attribute.String;
+    reviewDate: Attribute.Date;
+    review: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::ubuntu-aidercarouselcard.ubuntu-aidercarouselcard',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::ubuntu-aidercarouselcard.ubuntu-aidercarouselcard',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -788,91 +873,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiAiderAider extends Schema.CollectionType {
-  collectionName: 'aiders';
-  info: {
-    singularName: 'aider';
-    pluralName: 'aiders';
-    displayName: 'Aider';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    AiderImage: Attribute.Media;
-    name: Attribute.String;
-    reviewCount: Attribute.Integer;
-    rating: Attribute.Decimal;
-    location: Attribute.String;
-    aiderCaption: Attribute.Text;
-    practiceArea: Attribute.String;
-    license: Attribute.String;
-    link: Attribute.String;
-    tel: Attribute.BigInteger;
-    message: Attribute.String;
-    website: Attribute.String;
-    star: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::aider.aider',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::aider.aider',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiUbuntuAidercarouselcardUbuntuAidercarouselcard
-  extends Schema.CollectionType {
-  collectionName: 'ubuntu_aidercarouselcards';
-  info: {
-    singularName: 'ubuntu-aidercarouselcard';
-    pluralName: 'ubuntu-aidercarouselcards';
-    displayName: 'ubuntuAidercarouselcard';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    AiderName: Attribute.String;
-    reviewStars: Attribute.Media & Attribute.Required;
-    reviewsCount: Attribute.String;
-    ubuntuRating: Attribute.String;
-    aiderLocation: Attribute.String;
-    practiceArea: Attribute.String;
-    profileImage: Attribute.Media & Attribute.Required;
-    reviewTitle: Attribute.Text;
-    reviewerStars: Attribute.Media;
-    reviewerName: Attribute.String;
-    reviewDate: Attribute.Date;
-    review: Attribute.Text;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::ubuntu-aidercarouselcard.ubuntu-aidercarouselcard',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::ubuntu-aidercarouselcard.ubuntu-aidercarouselcard',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -883,6 +883,8 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::aider.aider': ApiAiderAider;
+      'api::ubuntu-aidercarouselcard.ubuntu-aidercarouselcard': ApiUbuntuAidercarouselcardUbuntuAidercarouselcard;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -891,8 +893,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::aider.aider': ApiAiderAider;
-      'api::ubuntu-aidercarouselcard.ubuntu-aidercarouselcard': ApiUbuntuAidercarouselcardUbuntuAidercarouselcard;
     }
   }
 }
