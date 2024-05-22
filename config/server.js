@@ -1,4 +1,5 @@
 module.exports = ({ env }) => ({
+  url: env('PUBLIC_URL', 'https://ubuntuaid-backend.onrender.com' ),
   host: env('HOST', '0.0.0.0'),
   port: env.int('PORT', 1337),
   app: {
