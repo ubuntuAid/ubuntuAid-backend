@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "endorsements",
+  "info": {
+    "singularName": "endorsement",
+    "pluralName": "endorsements",
+    "displayName": "endorsement",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "practiceArea": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "type": "date"
+    },
+    "body": {
+      "type": "blocks",
+      "required": true
+    },
+    "picture": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

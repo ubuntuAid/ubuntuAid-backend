@@ -1,0 +1,89 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lawyers",
+  "info": {
+    "singularName": "lawyer",
+    "pluralName": "lawyers",
+    "displayName": "Lawyer",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "biginteger"
+    },
+    "message": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "license": {
+      "type": "integer"
+    },
+    "state": {
+      "type": "string"
+    },
+    "acqiured": {
+      "type": "biginteger"
+    },
+    "status": {
+      "type": "string"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review"
+    },
+    "works": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::work.work"
+    },
+    "educations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::education.education"
+    },
+    "endorsement": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::endorsement.endorsement"
+    },
+    "engagements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::engagement.engagement"
+    },
+    "publications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::publication.publication"
+    },
+    "associations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::association.association"
+    },
+    "ubunturating": {
+      "type": "decimal"
+    },
+    "profile": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

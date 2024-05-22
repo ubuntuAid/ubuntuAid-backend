@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reviews",
+  "info": {
+    "singularName": "review",
+    "pluralName": "reviews",
+    "displayName": "review"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "rating": {
+      "type": "integer",
+      "required": true,
+      "min": 1,
+      "max": 5
+    },
+    "reviews": {
+      "type": "blocks",
+      "required": true
+    },
+    "consultation": {
+      "type": "boolean",
+      "required": true
+    },
+    "recommend": {
+      "type": "boolean",
+      "required": true
+    },
+    "posting": {
+      "type": "boolean",
+      "required": true
+    },
+    "firstName": {
+      "type": "string",
+      "required": true,
+      "regex": "^[A-Za-zÀ-ÖØ-öø-ÿ]+$"
+    },
+    "email": {
+      "type": "email",
+      "default": "example@example.com",
+      "required": true
+    }
+  }
+}

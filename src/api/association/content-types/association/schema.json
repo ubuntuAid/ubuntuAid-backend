@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "associations",
+  "info": {
+    "singularName": "association",
+    "pluralName": "associations",
+    "displayName": "association"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "string",
+      "required": true
+    },
+    "time": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

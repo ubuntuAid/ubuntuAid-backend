@@ -830,6 +830,289 @@ export interface ApiAiderAider extends Schema.CollectionType {
   };
 }
 
+export interface ApiAssociationAssociation extends Schema.CollectionType {
+  collectionName: 'associations';
+  info: {
+    singularName: 'association';
+    pluralName: 'associations';
+    displayName: 'association';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    status: Attribute.String & Attribute.Required;
+    time: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::association.association',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::association.association',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiEducationEducation extends Schema.CollectionType {
+  collectionName: 'educations';
+  info: {
+    singularName: 'education';
+    pluralName: 'educations';
+    displayName: 'education';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    institute: Attribute.String & Attribute.Required;
+    course: Attribute.String;
+    finalyear: Attribute.BigInteger;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::education.education',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::education.education',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiEndorsementEndorsement extends Schema.CollectionType {
+  collectionName: 'endorsements';
+  info: {
+    singularName: 'endorsement';
+    pluralName: 'endorsements';
+    displayName: 'endorsement';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    practiceArea: Attribute.String & Attribute.Required;
+    date: Attribute.Date;
+    body: Attribute.Blocks & Attribute.Required;
+    picture: Attribute.Media & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::endorsement.endorsement',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::endorsement.endorsement',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiEngagementEngagement extends Schema.CollectionType {
+  collectionName: 'engagements';
+  info: {
+    singularName: 'engagement';
+    pluralName: 'engagements';
+    displayName: 'engagement';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    topic: Attribute.String;
+    year: Attribute.BigInteger;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::engagement.engagement',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::engagement.engagement',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLawyerLawyer extends Schema.CollectionType {
+  collectionName: 'lawyers';
+  info: {
+    singularName: 'lawyer';
+    pluralName: 'lawyers';
+    displayName: 'Lawyer';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    location: Attribute.String;
+    phone: Attribute.BigInteger;
+    message: Attribute.String;
+    website: Attribute.String;
+    license: Attribute.Integer;
+    state: Attribute.String;
+    acqiured: Attribute.BigInteger;
+    status: Attribute.String;
+    reviews: Attribute.Relation<
+      'api::lawyer.lawyer',
+      'oneToMany',
+      'api::review.review'
+    >;
+    works: Attribute.Relation<
+      'api::lawyer.lawyer',
+      'oneToMany',
+      'api::work.work'
+    >;
+    educations: Attribute.Relation<
+      'api::lawyer.lawyer',
+      'oneToMany',
+      'api::education.education'
+    >;
+    endorsement: Attribute.Relation<
+      'api::lawyer.lawyer',
+      'oneToOne',
+      'api::endorsement.endorsement'
+    >;
+    engagements: Attribute.Relation<
+      'api::lawyer.lawyer',
+      'oneToMany',
+      'api::engagement.engagement'
+    >;
+    publications: Attribute.Relation<
+      'api::lawyer.lawyer',
+      'oneToMany',
+      'api::publication.publication'
+    >;
+    associations: Attribute.Relation<
+      'api::lawyer.lawyer',
+      'oneToMany',
+      'api::association.association'
+    >;
+    ubunturating: Attribute.Decimal;
+    profile: Attribute.Media & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::lawyer.lawyer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::lawyer.lawyer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPublicationPublication extends Schema.CollectionType {
+  collectionName: 'publications';
+  info: {
+    singularName: 'publication';
+    pluralName: 'publications';
+    displayName: 'publication';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    subtitle: Attribute.Text & Attribute.Required;
+    pubyear: Attribute.BigInteger & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::publication.publication',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::publication.publication',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiReviewReview extends Schema.CollectionType {
+  collectionName: 'reviews';
+  info: {
+    singularName: 'review';
+    pluralName: 'reviews';
+    displayName: 'review';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
+    rating: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 5;
+        },
+        number
+      >;
+    reviews: Attribute.Blocks & Attribute.Required;
+    consultation: Attribute.Boolean & Attribute.Required;
+    recommend: Attribute.Boolean & Attribute.Required;
+    posting: Attribute.Boolean & Attribute.Required;
+    firstName: Attribute.String & Attribute.Required;
+    email: Attribute.Email &
+      Attribute.Required &
+      Attribute.DefaultTo<'example@example.com'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::review.review',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::review.review',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiUbuntuAidercarouselcardUbuntuAidercarouselcard
   extends Schema.CollectionType {
   collectionName: 'ubuntu_aidercarouselcards';
@@ -873,6 +1156,29 @@ export interface ApiUbuntuAidercarouselcardUbuntuAidercarouselcard
   };
 }
 
+export interface ApiWorkWork extends Schema.CollectionType {
+  collectionName: 'works';
+  info: {
+    singularName: 'work';
+    pluralName: 'works';
+    displayName: 'work';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    role: Attribute.String & Attribute.Required;
+    company: Attribute.String & Attribute.Required;
+    timeframe: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::work.work', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::work.work', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -892,7 +1198,15 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::aider.aider': ApiAiderAider;
+      'api::association.association': ApiAssociationAssociation;
+      'api::education.education': ApiEducationEducation;
+      'api::endorsement.endorsement': ApiEndorsementEndorsement;
+      'api::engagement.engagement': ApiEngagementEngagement;
+      'api::lawyer.lawyer': ApiLawyerLawyer;
+      'api::publication.publication': ApiPublicationPublication;
+      'api::review.review': ApiReviewReview;
       'api::ubuntu-aidercarouselcard.ubuntu-aidercarouselcard': ApiUbuntuAidercarouselcardUbuntuAidercarouselcard;
+      'api::work.work': ApiWorkWork;
     }
   }
 }

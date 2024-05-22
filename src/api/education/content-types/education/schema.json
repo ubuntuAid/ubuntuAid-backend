@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "educations",
+  "info": {
+    "singularName": "education",
+    "pluralName": "educations",
+    "displayName": "education"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "institute": {
+      "type": "string",
+      "required": true
+    },
+    "course": {
+      "type": "string"
+    },
+    "finalyear": {
+      "type": "biginteger"
+    }
+  }
+}
