@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * work service
+ * experience service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::work.work');
+module.exports = createCoreService('api::experience.experience');

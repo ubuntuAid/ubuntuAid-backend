@@ -4,7 +4,8 @@
   "info": {
     "singularName": "engagement",
     "pluralName": "engagements",
-    "displayName": "engagement"
+    "displayName": "engagement",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -20,6 +21,12 @@
     },
     "year": {
       "type": "biginteger"
+    },
+    "lawyer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lawyer.lawyer",
+      "inversedBy": "engagements"
     }
   }
 }

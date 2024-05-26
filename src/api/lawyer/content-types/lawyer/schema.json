@@ -28,7 +28,7 @@
       "type": "string"
     },
     "license": {
-      "type": "integer"
+      "type": "string"
     },
     "state": {
       "type": "string"
@@ -39,51 +39,65 @@
     "status": {
       "type": "string"
     },
-    "reviews": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::review.review"
-    },
-    "works": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::work.work"
-    },
-    "educations": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::education.education"
-    },
-    "endorsement": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::endorsement.endorsement"
-    },
-    "engagements": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::engagement.engagement"
-    },
-    "publications": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::publication.publication"
-    },
-    "associations": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::association.association"
-    },
     "ubunturating": {
       "type": "decimal"
     },
     "profile": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "practice": {
+      "type": "string",
       "required": true
+    },
+    "caption": {
+      "type": "text"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "lawyer"
+    },
+    "associations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::association.association",
+      "mappedBy": "lawyer"
+    },
+    "educations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::education.education",
+      "mappedBy": "lawyer"
+    },
+    "endorsements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::endorsement.endorsement",
+      "mappedBy": "lawyer"
+    },
+    "engagements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::engagement.engagement",
+      "mappedBy": "lawyer"
+    },
+    "publications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::publication.publication",
+      "mappedBy": "lawyer"
+    },
+    "experiences": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::experience.experience",
+      "mappedBy": "lawyer"
     }
   }
 }

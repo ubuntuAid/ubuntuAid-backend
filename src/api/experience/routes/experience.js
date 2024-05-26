@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * work router
+ * experience router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::work.work');
+module.exports = createCoreRouter('api::experience.experience');

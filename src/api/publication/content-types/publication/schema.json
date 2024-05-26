@@ -4,7 +4,8 @@
   "info": {
     "singularName": "publication",
     "pluralName": "publications",
-    "displayName": "publication"
+    "displayName": "publication",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,6 +23,12 @@
     "pubyear": {
       "type": "biginteger",
       "required": true
+    },
+    "lawyer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lawyer.lawyer",
+      "inversedBy": "publications"
     }
   }
 }

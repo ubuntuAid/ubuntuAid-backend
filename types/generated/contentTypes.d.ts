@@ -836,6 +836,7 @@ export interface ApiAssociationAssociation extends Schema.CollectionType {
     singularName: 'association';
     pluralName: 'associations';
     displayName: 'association';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -844,6 +845,11 @@ export interface ApiAssociationAssociation extends Schema.CollectionType {
     name: Attribute.String & Attribute.Required;
     status: Attribute.String & Attribute.Required;
     time: Attribute.String & Attribute.Required;
+    lawyer: Attribute.Relation<
+      'api::association.association',
+      'manyToOne',
+      'api::lawyer.lawyer'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -867,6 +873,7 @@ export interface ApiEducationEducation extends Schema.CollectionType {
     singularName: 'education';
     pluralName: 'educations';
     displayName: 'education';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -875,6 +882,11 @@ export interface ApiEducationEducation extends Schema.CollectionType {
     institute: Attribute.String & Attribute.Required;
     course: Attribute.String;
     finalyear: Attribute.BigInteger;
+    lawyer: Attribute.Relation<
+      'api::education.education',
+      'manyToOne',
+      'api::lawyer.lawyer'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -907,9 +919,13 @@ export interface ApiEndorsementEndorsement extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required;
     practiceArea: Attribute.String & Attribute.Required;
-    date: Attribute.Date;
-    body: Attribute.Blocks & Attribute.Required;
     picture: Attribute.Media & Attribute.Required;
+    body: Attribute.Text;
+    lawyer: Attribute.Relation<
+      'api::endorsement.endorsement',
+      'manyToOne',
+      'api::lawyer.lawyer'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -934,6 +950,7 @@ export interface ApiEngagementEngagement extends Schema.CollectionType {
     singularName: 'engagement';
     pluralName: 'engagements';
     displayName: 'engagement';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -942,6 +959,11 @@ export interface ApiEngagementEngagement extends Schema.CollectionType {
     title: Attribute.String & Attribute.Required;
     topic: Attribute.String;
     year: Attribute.BigInteger;
+    lawyer: Attribute.Relation<
+      'api::engagement.engagement',
+      'manyToOne',
+      'api::lawyer.lawyer'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -952,6 +974,42 @@ export interface ApiEngagementEngagement extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::engagement.engagement',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiExperienceExperience extends Schema.CollectionType {
+  collectionName: 'experiences';
+  info: {
+    singularName: 'experience';
+    pluralName: 'experiences';
+    displayName: 'experience';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    role: Attribute.String;
+    company: Attribute.String;
+    timeframe: Attribute.String;
+    lawyer: Attribute.Relation<
+      'api::experience.experience',
+      'manyToOne',
+      'api::lawyer.lawyer'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::experience.experience',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::experience.experience',
       'oneToOne',
       'admin::user'
     > &
@@ -976,28 +1034,32 @@ export interface ApiLawyerLawyer extends Schema.CollectionType {
     phone: Attribute.BigInteger;
     message: Attribute.String;
     website: Attribute.String;
-    license: Attribute.Integer;
+    license: Attribute.String;
     state: Attribute.String;
     acqiured: Attribute.BigInteger;
     status: Attribute.String;
+    ubunturating: Attribute.Decimal;
+    profile: Attribute.Media & Attribute.Required;
+    practice: Attribute.String & Attribute.Required;
+    caption: Attribute.Text;
     reviews: Attribute.Relation<
       'api::lawyer.lawyer',
       'oneToMany',
       'api::review.review'
     >;
-    works: Attribute.Relation<
+    associations: Attribute.Relation<
       'api::lawyer.lawyer',
       'oneToMany',
-      'api::work.work'
+      'api::association.association'
     >;
     educations: Attribute.Relation<
       'api::lawyer.lawyer',
       'oneToMany',
       'api::education.education'
     >;
-    endorsement: Attribute.Relation<
+    endorsements: Attribute.Relation<
       'api::lawyer.lawyer',
-      'oneToOne',
+      'oneToMany',
       'api::endorsement.endorsement'
     >;
     engagements: Attribute.Relation<
@@ -1010,13 +1072,11 @@ export interface ApiLawyerLawyer extends Schema.CollectionType {
       'oneToMany',
       'api::publication.publication'
     >;
-    associations: Attribute.Relation<
+    experiences: Attribute.Relation<
       'api::lawyer.lawyer',
       'oneToMany',
-      'api::association.association'
+      'api::experience.experience'
     >;
-    ubunturating: Attribute.Decimal;
-    profile: Attribute.Media & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1040,6 +1100,7 @@ export interface ApiPublicationPublication extends Schema.CollectionType {
     singularName: 'publication';
     pluralName: 'publications';
     displayName: 'publication';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1048,6 +1109,11 @@ export interface ApiPublicationPublication extends Schema.CollectionType {
     title: Attribute.String & Attribute.Required;
     subtitle: Attribute.Text & Attribute.Required;
     pubyear: Attribute.BigInteger & Attribute.Required;
+    lawyer: Attribute.Relation<
+      'api::publication.publication',
+      'manyToOne',
+      'api::lawyer.lawyer'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1072,6 +1138,7 @@ export interface ApiReviewReview extends Schema.CollectionType {
     singularName: 'review';
     pluralName: 'reviews';
     displayName: 'review';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1087,14 +1154,17 @@ export interface ApiReviewReview extends Schema.CollectionType {
         },
         number
       >;
-    reviews: Attribute.Blocks & Attribute.Required;
     consultation: Attribute.Boolean & Attribute.Required;
     recommend: Attribute.Boolean & Attribute.Required;
     posting: Attribute.Boolean & Attribute.Required;
-    firstName: Attribute.String & Attribute.Required;
-    email: Attribute.Email &
-      Attribute.Required &
-      Attribute.DefaultTo<'example@example.com'>;
+    firstName: Attribute.String;
+    email: Attribute.Email & Attribute.DefaultTo<'example@example.com'>;
+    reviewbody: Attribute.Text & Attribute.Required;
+    lawyer: Attribute.Relation<
+      'api::review.review',
+      'manyToOne',
+      'api::lawyer.lawyer'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1156,29 +1226,6 @@ export interface ApiUbuntuAidercarouselcardUbuntuAidercarouselcard
   };
 }
 
-export interface ApiWorkWork extends Schema.CollectionType {
-  collectionName: 'works';
-  info: {
-    singularName: 'work';
-    pluralName: 'works';
-    displayName: 'work';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    role: Attribute.String & Attribute.Required;
-    company: Attribute.String & Attribute.Required;
-    timeframe: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::work.work', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::work.work', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1202,11 +1249,11 @@ declare module '@strapi/types' {
       'api::education.education': ApiEducationEducation;
       'api::endorsement.endorsement': ApiEndorsementEndorsement;
       'api::engagement.engagement': ApiEngagementEngagement;
+      'api::experience.experience': ApiExperienceExperience;
       'api::lawyer.lawyer': ApiLawyerLawyer;
       'api::publication.publication': ApiPublicationPublication;
       'api::review.review': ApiReviewReview;
       'api::ubuntu-aidercarouselcard.ubuntu-aidercarouselcard': ApiUbuntuAidercarouselcardUbuntuAidercarouselcard;
-      'api::work.work': ApiWorkWork;
     }
   }
 }

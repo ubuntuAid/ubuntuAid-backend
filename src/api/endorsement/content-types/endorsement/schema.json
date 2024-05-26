@@ -20,20 +20,22 @@
       "type": "string",
       "required": true
     },
-    "date": {
-      "type": "date"
-    },
-    "body": {
-      "type": "blocks",
-      "required": true
-    },
     "picture": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "body": {
+      "type": "text"
+    },
+    "lawyer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lawyer.lawyer",
+      "inversedBy": "endorsements"
     }
   }
 }

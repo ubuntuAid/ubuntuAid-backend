@@ -4,7 +4,8 @@
   "info": {
     "singularName": "education",
     "pluralName": "educations",
-    "displayName": "education"
+    "displayName": "education",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,6 +21,12 @@
     },
     "finalyear": {
       "type": "biginteger"
+    },
+    "lawyer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lawyer.lawyer",
+      "inversedBy": "educations"
     }
   }
 }

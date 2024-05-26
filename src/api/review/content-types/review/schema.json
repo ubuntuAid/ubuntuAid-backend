@@ -4,7 +4,8 @@
   "info": {
     "singularName": "review",
     "pluralName": "reviews",
-    "displayName": "review"
+    "displayName": "review",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,10 +23,6 @@
       "min": 1,
       "max": 5
     },
-    "reviews": {
-      "type": "blocks",
-      "required": true
-    },
     "consultation": {
       "type": "boolean",
       "required": true
@@ -40,13 +37,23 @@
     },
     "firstName": {
       "type": "string",
-      "required": true,
+      "required": false,
       "regex": "^[A-Za-zÀ-ÖØ-öø-ÿ]+$"
     },
     "email": {
       "type": "email",
       "default": "example@example.com",
+      "required": false
+    },
+    "reviewbody": {
+      "type": "text",
       "required": true
+    },
+    "lawyer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lawyer.lawyer",
+      "inversedBy": "reviews"
     }
   }
 }

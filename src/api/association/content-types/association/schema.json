@@ -4,7 +4,8 @@
   "info": {
     "singularName": "association",
     "pluralName": "associations",
-    "displayName": "association"
+    "displayName": "association",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -22,6 +23,12 @@
     "time": {
       "type": "string",
       "required": true
+    },
+    "lawyer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lawyer.lawyer",
+      "inversedBy": "associations"
     }
   }
 }
