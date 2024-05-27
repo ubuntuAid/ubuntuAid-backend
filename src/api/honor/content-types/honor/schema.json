@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "honors",
+  "info": {
+    "singularName": "honor",
+    "pluralName": "honors",
+    "displayName": "honor"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "honorName": {
+      "type": "string"
+    },
+    "honorTitle": {
+      "type": "string"
+    },
+    "honorYear": {
+      "type": "biginteger"
+    },
+    "lawyer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lawyer.lawyer",
+      "inversedBy": "honors"
+    }
+  }
+}

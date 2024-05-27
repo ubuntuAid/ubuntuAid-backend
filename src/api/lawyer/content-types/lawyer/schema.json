@@ -40,7 +40,7 @@
       "type": "string"
     },
     "ubunturating": {
-      "type": "decimal"
+      "type": "float"
     },
     "profile": {
       "type": "media",
@@ -97,6 +97,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::experience.experience",
+      "mappedBy": "lawyer"
+    },
+    "honors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::honor.honor",
       "mappedBy": "lawyer"
     }
   }

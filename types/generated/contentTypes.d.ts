@@ -1017,6 +1017,42 @@ export interface ApiExperienceExperience extends Schema.CollectionType {
   };
 }
 
+export interface ApiHonorHonor extends Schema.CollectionType {
+  collectionName: 'honors';
+  info: {
+    singularName: 'honor';
+    pluralName: 'honors';
+    displayName: 'honor';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    honorName: Attribute.String;
+    honorTitle: Attribute.String;
+    honorYear: Attribute.BigInteger;
+    lawyer: Attribute.Relation<
+      'api::honor.honor',
+      'manyToOne',
+      'api::lawyer.lawyer'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::honor.honor',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::honor.honor',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiLawyerLawyer extends Schema.CollectionType {
   collectionName: 'lawyers';
   info: {
@@ -1038,7 +1074,7 @@ export interface ApiLawyerLawyer extends Schema.CollectionType {
     state: Attribute.String;
     acqiured: Attribute.BigInteger;
     status: Attribute.String;
-    ubunturating: Attribute.Decimal;
+    ubunturating: Attribute.Float;
     profile: Attribute.Media & Attribute.Required;
     practice: Attribute.String & Attribute.Required;
     caption: Attribute.Text;
@@ -1076,6 +1112,11 @@ export interface ApiLawyerLawyer extends Schema.CollectionType {
       'api::lawyer.lawyer',
       'oneToMany',
       'api::experience.experience'
+    >;
+    honors: Attribute.Relation<
+      'api::lawyer.lawyer',
+      'oneToMany',
+      'api::honor.honor'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1250,6 +1291,7 @@ declare module '@strapi/types' {
       'api::endorsement.endorsement': ApiEndorsementEndorsement;
       'api::engagement.engagement': ApiEngagementEngagement;
       'api::experience.experience': ApiExperienceExperience;
+      'api::honor.honor': ApiHonorHonor;
       'api::lawyer.lawyer': ApiLawyerLawyer;
       'api::publication.publication': ApiPublicationPublication;
       'api::review.review': ApiReviewReview;
