@@ -36,6 +36,9 @@
       "relation": "manyToOne",
       "target": "api::lawyer.lawyer",
       "inversedBy": "endorsements"
+    },
+    "relationship": {
+      "type": "string"
     }
   }
 }

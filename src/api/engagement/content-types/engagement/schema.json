@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "engagement": {
       "type": "string",
       "required": true
     },

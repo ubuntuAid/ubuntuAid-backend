@@ -926,6 +926,7 @@ export interface ApiEndorsementEndorsement extends Schema.CollectionType {
       'manyToOne',
       'api::lawyer.lawyer'
     >;
+    relationship: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -956,7 +957,7 @@ export interface ApiEngagementEngagement extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
+    engagement: Attribute.String & Attribute.Required;
     topic: Attribute.String;
     year: Attribute.BigInteger;
     lawyer: Attribute.Relation<
@@ -1074,7 +1075,7 @@ export interface ApiLawyerLawyer extends Schema.CollectionType {
     state: Attribute.String;
     acqiured: Attribute.BigInteger;
     status: Attribute.String;
-    ubunturating: Attribute.Float;
+    ubunturating: Attribute.Decimal;
     profile: Attribute.Media & Attribute.Required;
     practice: Attribute.String & Attribute.Required;
     caption: Attribute.Text;

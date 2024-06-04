@@ -40,7 +40,7 @@
       "type": "string"
     },
     "ubunturating": {
-      "type": "float"
+      "type": "decimal"
     },
     "profile": {
       "type": "media",
